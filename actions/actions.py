@@ -16,7 +16,6 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 import pandas as pd
 from word2number import w2n
-# import random
 
 
 geolocator = Nominatim(user_agent="rasa_chat")
@@ -52,7 +51,7 @@ class ActionPlacesSearch(Action):
         
         headers = {
             "Accept": "application/json",
-            "Authorization": "fsq3y8UCI0XNTY5e67xYbHMAqx7CCJZ7x1or+mAj6lBFwqY="
+            "Authorization": ""
         }
 
         params = {'ll':location, 'radius':radius, 'categories':categories}
@@ -75,11 +74,6 @@ class ActionPlacesSearch(Action):
             bot_response = '\n\n'.join(df.apply(lambda x: f"Name: {x['name']}\nAddress: {x['address']}\nDistance: {x['distance']} km", axis=1))
         except:
             bot_response = 'No results returned. Try with a different location or larger radius.'
-        
-        # if random.random() > 0.2:
-        #     bot_response = f'I got something,{categories}, {location.address}, {radius}'
-        # else:
-        #     bot_response = 'No results returned. Try with a different location or larger radius.'
         
         dispatcher.utter_message(text = bot_response)
         return []
@@ -142,7 +136,6 @@ class ValidatePlacesSearchForm(FormValidationAction):
                 dispatcher.utter_message(template="utter_wrong_address")
                 return {"address": None}
             else:
-                # SlotSet('lat_lon', f'{location.latitude},{location.longitude}')
                 return {"address": slot_value, 'lat_lon': f'{location.latitude},{location.longitude}'}
         except:
             dispatcher.utter_message(text='Facing server issues. Please try again later')
@@ -168,15 +161,3 @@ class ValidatePlacesSearchForm(FormValidationAction):
             dispatcher.utter_message(template="utter_wrong_radius")
             return {"radius": None}
 
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []

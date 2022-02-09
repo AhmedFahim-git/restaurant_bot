@@ -62,8 +62,6 @@ responses:
       payload: /giving_place_type{{"place_type":"coffee houses"}}
     - title: Both
       payload: /giving_place_type{{"place_type":"both restaurants and coffee houses"}}
-  # utter_beginning_search:
-  # - text: Looking for {place_type} around {address} with a search radius of {radius} km
   utter_wrong_address:
   - text: Address not found. Check for spelling mistakes.
   utter_wrong_radius:
@@ -94,7 +92,6 @@ actions:
 - action_beginning_search
 - action_validate_slot_mappings
 - utter_ask_place_type
-# - utter_beginning_search
 - utter_cheer_up
 - utter_goodbye
 - utter_greet
