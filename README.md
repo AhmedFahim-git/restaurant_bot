@@ -16,7 +16,8 @@ rasa run actions
 
 Then in another terminal run the following command
 
-```` terminal
+``` terminal
 rasa run --enable-api --cors='*'
 ```
+
 Finally open the index.html file in the Chatbot-UI folder using your browser.
