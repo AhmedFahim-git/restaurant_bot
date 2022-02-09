@@ -124,17 +124,17 @@ class ValidatePredefinedSlots(ValidationAction):
         
         try:
             # if the user gave a valid number as input we should be able to convert to numeric form
-            number =  int(float(w2n.word_to_num(slot_value))*1000 )
+            number =  w2n.word_to_num(slot_value)
             
-            # The radius should be between 0 to 100 km
-            if number > 100000:
+            # The radius should be between 0 to 100 km. However we don't want to search with radius less that 0.1 km
+            if number > 100:
                 dispatcher.utter_message(text='Maximum radius is 100 km. Setting radius to 100 km.')
                 return {'radius': str(100)}
-            elif number < 100:
+            elif number < 0.1:
                 dispatcher.utter_message(text='Minimum radius is 0.1 km. Setting radius to 0.1 km.')
                 return {'radius': str(0.1)}
             else:
-                return {'radius': str(number/1000)}
+                return {'radius': str(number)}
         except:
             # if user gave input that cannot be converted into a number, then we return the following messsage
             dispatcher.utter_message(template="utter_wrong_radius")
@@ -177,17 +177,17 @@ class ValidatePlacesSearchForm(FormValidationAction):
         
         try:
             # if the user gave a valid number as input we should be able to convert to numeric form
-            number =  int(float(w2n.word_to_num(slot_value))*1000 )
+            number =  w2n.word_to_num(slot_value)
             
-            # The radius should be between 0 to 100 km
-            if number > 100000:
+            # The radius should be between 0 to 100 km. However we don't want to search with radius less that 0.1 km
+            if number > 100:
                 dispatcher.utter_message(text='Maximum radius is 100 km. Setting radius to 100 km.')
                 return {'radius': str(100)}
-            elif number < 100:
+            elif number < 0.1:
                 dispatcher.utter_message(text='Minimum radius is 0.1 km. Setting radius to 0.1 km.')
                 return {'radius': str(0.1)}
             else:
-                return {'radius': str(number/1000)}
+                return {'radius': str(number)}
         except:
             # if user gave input that cannot be converted into a number, then we return the following messsage
             dispatcher.utter_message(template="utter_wrong_radius")
