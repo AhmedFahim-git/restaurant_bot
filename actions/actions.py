@@ -45,7 +45,6 @@ class ActionPlacesSearch(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         categories = self.code_dict[tracker.get_slot('place_type')]
-        # location = geolocator.geocode(', '.join(tracker.get_slot('address')))
         location = tracker.get_slot('lat_lon')
         radius = int(float(tracker.get_slot('radius'))*1000)
         
