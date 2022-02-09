@@ -1,0 +1,197 @@
+version: "3.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hello
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - thanks, bye
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: out_of_scope
+  examples: |
+    - I would like to order a pizza.
+    - Do you know how to get there.
+    - I want to book a table
+    - Can you tell me when it is open.
+    - Are they open now
+    - Can you tell me more about the [restaurants](place_type)?
+- intent: thanks
+  examples: |
+    - thanks
+    - thanks a lot
+    - Thank you very much
+    - Thank you for your service.
+    - Thank you for your help.
+    - Thanks
+    - OK thanks
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I am doing great
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: giving_place_type
+  examples: |
+    - I want to look for [restaurants](place_type)
+    - I would like to make a search for [restaurants](place_type)
+    - Look for [both restaurants and coffee houses](place_type)
+    - Search for them [both](place_type)
+    - in [Berlin](address)
+    - near [University of Dhaka, Bangladesh](address)
+    - in [New York, USA](address)
+    - Find [restaurants](place_type) near [Jabi], [Abuja], [Nigeria](address)
+    - Search [coffee houses](place_type) around [La Souterraine](address), [France](address)
+    - Look for them [both](place_type) near about [State of Mato Grosso](address), [Brazil](address)
+    - Search for [restaurants](place_type) close to the [Taj Mahal](address), [India](address)
+    - Search [restaurants](place_type) around the [Kremlin](address), [Russia](address) within a [26](radius) kilometre radius
+    - Give me [coffee houses](place_type) in [Tokyo](address), [Japan](address) with a radius of [80](radius) km
+    - I want to look for [both]{"entity": "place_type", "value": "both restaurants and coffee houses"}
+    - I want [coffee houses](address) [thirty three](radius) kilometer from here.
+    - I want to search in [Paris](address), [France](address)
+    - Look for [restaurants](place_type) in [Canada](address)
+    - I want to search near the [Taj Mahal](address), [India](address)
+    - Look for [restaurants](place_type) instead
+    - Look for [coffee houses](place_type) instead
+    - Look for them [both](place_type)
+    - I want to search in [New York](address), [USA](address)
+    - Look for [both]{"entity": "place_type", "value": "both restaurants and coffee houses"} [coffee houses and](place_type) [restaurants](place_type) in Seattle, [USA](address)
+- intent: giving_address
+  examples: |
+    - I live in [Scarborough](address), [Toronto](address), [ON](address), [Canada](address)
+    - [317 Dundas St W](address), [Toronto](address), [ON M5T 1G4](address), [Canada](address)
+    - I am currently at [Scarborough Civic Center](address), [Toronto](address), [ON](address), [Canada](address)
+    - My current location is [Ga 11](address), [Middle Badda](address), [Dhaka](address), [Bangladesh](address)
+    - Find venues aroud [Alex Ekwueme Way](address), [Jabi](address), [Abuja](address), [Nigeria](address) within a [12.5](radius) km radius
+    - Look for places about [34](radius) kilometres around the [Eifel tower](address), [Paris](address), [France](address)
+    - [Dhaka](address), [Bangladesh](address)
+    - Now look for places in [Berlin](address)
+    - I want to search in [Beijing](address), [China](address)
+    - [Dhaka](address)
+    - [London](address)
+    - [Beijing](address), [China](address)
+    - [Toronto](address)
+    - [New York](address)
+    - [Manhattan](address)
+    - [London](address)
+    - Can I search in [Gulsan](address), [Dhaka](address)
+- intent: giving_radius
+  examples: |
+    - Use a search radius of [5](radius) kilometers
+    - [20](radius)
+    - [ninety one](radius)
+    - [fifty](radius) kilometers
+    - Search within [eleven](radius) km from here.
+    - Search within [15](radius) km
+    - Give me venues [17.5](radius) km from here.
+    - Look for places [99](radius) kilometers from me.
+    - [3](radius) kilometres
+    - [twenty two point one] kilometer
+    - Use a radius of [twenty five](radius) km
+    - Search within [five](radius) km
+    - About [thirty](radius) kilometers
+    - Use a [30](radius) km search radius
+    - [six](radius) kilometre
+    - Find places within [a hundred](radius) km from here
+    - Search within [five](radius) kilometers from here
+    - change search radius to [3](radius) km from here
+    - Search within [10](radius) kilometers
+    - OK search within [50](radius) km
+    - [thirty](radius) km
+    - [ninety](radius) kilometers
+- intent: ask_purpose
+  examples: |
+    - what can you do?
+    - What do you do?
+    - What is your purpose?
+    - How can you help me?
+    - Is there anything you can do?
+    - what do you do
+    - what do you do?
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- synonym: both restaurants and coffee houses
+  examples: |
+    - both
+    - both restaurants and coffee house
+    - both restaurant and coffee houses
+    - both restaurant and coffee house
+    - restaurant and coffee house
+    - restaurant and coffee houses
+    - restaurants and coffee house
+    - restaurants and coffee houses
+    - both coffee houses and restaurants
+    - both coffee houses and restaurant
+    - both coffee house and restaurants
+    - both coffee house and restaurant
+    - coffee houses and restaurants
+    - coffee house and restaurants
+    - coffee houses and restaurant
+    - coffee house and restaurant
+- synonym: restaurants
+  examples: |
+    - restaurant
+- synonym: coffee houses
+  examples: |
+    - coffee house
+    - coffee

@@ -1,0 +1,5 @@
+.rasa
+.ipynb_checkpoints
+story_graph.dot
+models
+__pycache__

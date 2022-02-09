@@ -1,0 +1,302 @@
+version: "3.0"
+
+stories:
+
+# - story: happy path
+  # steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: mood_great
+  # - action: utter_happy
+  # - action: utter_purpose
+  # - checkpoint: uttered_purpose
+# 
+# - story: sad path 1
+  # steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - intent: mood_unhappy
+  # - action: utter_cheer_up
+  # - action: utter_purpose
+  # - checkpoint: uttered_purpose
+# 
+# - story: Explaining purpose
+  # steps:
+  # - intent: ask_purpose
+  # - action: utter_purpose
+  # - checkpoint: uttered_purpose
+# 
+# - story: interactive_story_1
+  # steps:
+  # - checkpoint: uttered_purpose
+  # - action: utter_ask_place_type
+  # - intent: giving_place_type
+    # entities:
+    # - place_type: both restaurants and coffee houses
+  # - slot_was_set:
+    # - place_type: both restaurants and coffee houses
+  # - action: place_search_form
+  # - active_loop: place_search_form
+  # - slot_was_set:
+    # - requested_slot: address
+  # - slot_was_set:
+    # - address:
+      # - Dhaka
+      # - Bangladesh
+  # - slot_was_set:
+    # - requested_slot: radius
+  # - slot_was_set:
+    # - radius: '3'
+  # - slot_was_set:
+    # - requested_slot: null
+  # - active_loop: null
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: goodbye
+  # - action: utter_goodbye
+# 
+# - story: interactive_story_2
+  # steps:
+  # - intent: greet
+  # - action: utter_greet
+  # - action: utter_purpose
+  # - action: utter_ask_place_type
+  # - intent: giving_place_type
+    # entities:
+    # - place_type: restaurants
+  # - slot_was_set:
+    # - place_type: restaurants
+  # - action: place_search_form
+  # - active_loop: place_search_form
+  # - slot_was_set:
+    # - requested_slot: address
+  # - slot_was_set:
+    # - address:
+      # - Paris
+      # - France
+  # - slot_was_set:
+    # - requested_slot: radius
+  # - slot_was_set:
+    # - radius: '5000'
+  # - slot_was_set:
+    # - requested_slot: null
+  # - active_loop: null
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: giving_address
+    # entities:
+    # - address: Berlin
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: giving_radius
+    # entities:
+    # - radius: '30'
+  # - slot_was_set:
+    # - radius: '30000'
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: goodbye
+  # - action: utter_goodbye
+# 
+# - story: interactive_story_3
+  # steps:
+  # - intent: giving_place_type
+    # entities:
+    # - place_type: restaurants
+    # - address: Canada
+  # - slot_was_set:
+    # - address:
+      # - Canada
+  # - slot_was_set:
+    # - place_type: restaurants
+  # - action: place_search_form
+  # - active_loop: place_search_form
+  # - slot_was_set:
+    # - requested_slot: radius
+  # - intent: giving_radius
+    # entities:
+    # - radius: six
+  # - action: utter_beginning_search
+  # - action: action_places_search
+# 
+# - story: interactive_story_4
+  # steps:
+  # - checkpoint: uttered_purpose
+  # - action: utter_ask_place_type
+  # - action: place_search_form
+  # - active_loop: place_search_form
+  # - slot_was_set:
+    # - requested_slot: place_type
+  # - slot_was_set:
+    # - place_type: coffee houses
+  # - slot_was_set:
+    # - requested_slot: address
+  # - slot_was_set:
+    # - address:
+      # - Taj Mahal
+      # - India
+  # - slot_was_set:
+    # - requested_slot: radius
+  # - slot_was_set:
+    # - radius: '5000'
+  # - slot_was_set:
+    # - requested_slot: null
+  # - active_loop: null
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: giving_radius
+    # entities:
+    # - radius: '3'
+  # - slot_was_set:
+    # - radius: '3000'
+  # - action: utter_beginning_search
+  # - action: action_places_search
+  # - intent: goodbye
+  # - action: utter_goodbye
+# 
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_purpose
+  - action: utter_ask_place_type
+  - intent: giving_place_type
+    entities:
+    - place_type: restaurants
+  - slot_was_set:
+    - place_type: restaurants
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 51.5073219,-0.1276474
+  - slot_was_set:
+    - address:
+      - London
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '10.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: giving_radius
+    entities:
+    - radius: '50'
+  - slot_was_set:
+    - radius: '50.0'
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_purpose
+  - action: utter_ask_place_type
+  - intent: giving_place_type
+    entities:
+    - place_type: both restaurants and coffee houses
+  - slot_was_set:
+    - place_type: both restaurants and coffee houses
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 40.7127281,-74.0060152
+  - slot_was_set:
+    - address:
+      - New York
+      - USA
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '30.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: thanks
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_3
+  steps:
+  - intent: ask_purpose
+  - action: utter_purpose
+  - action: utter_ask_place_type
+  - intent: giving_place_type
+    entities:
+    - place_type: coffee houses
+  - slot_was_set:
+    - place_type: coffee houses
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: address
+  - slot_was_set:
+    - lat_lon: 51.5073219,-0.1276474
+  - slot_was_set:
+    - address:
+      - London
+  - slot_was_set:
+    - requested_slot: radius
+  - slot_was_set:
+    - radius: '90.0'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: giving_place_type
+    entities:
+    - place_type: both restaurants and coffee houses
+    - place_type: coffee houses and
+    - place_type: restaurants
+    - address: USA
+  - slot_was_set:
+    - lat_lon: 39.7837304,-100.445882
+  - slot_was_set:
+    - address:
+      - USA
+  - slot_was_set:
+    - place_type: restaurants
+  - action: place_search_form
+  - active_loop: place_search_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: giving_address
+    entities:
+    - address: Gulsan
+    - address: Dhaka
+  - slot_was_set:
+    - lat_lon: 23.6148078,90.502026
+  - slot_was_set:
+    - address:
+      - Gulsan
+      - Dhaka
+  - action: action_beginning_search
+  - action: action_places_search
+  - intent: out_of_scope
+    entities:
+    - place_type: restaurants
+  - action: utter_out_of_scope
+  - intent: thanks
+  - action: utter_welcome
+  - intent: goodbye
+  - action: utter_goodbye

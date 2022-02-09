@@ -1,0 +1,111 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- giving_place_type
+- goodbye
+- thanks
+- giving_radius
+- giving_address
+- out_of_scope
+- ask_purpose
+- greet
+- mood_unhappy
+- mood_great
+- affirm
+- bot_challenge
+entities:
+- address
+- place_type
+- radius
+slots:
+  lat_lon:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  address:
+    type: list
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: address
+  radius:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: radius
+  place_type:
+    type: categorical
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: place_type
+      intent: giving_place_type
+    values:
+    - restaurants
+    - coffee houses
+    - both restaurants and coffee houses
+responses:
+  utter_ask_address:
+  - text: Where do you want to search?
+  utter_ask_radius:
+  - text: Specify search radius, in km.
+  utter_ask_place_type:
+  - text: Do you want to look for restaurants, coffee house, or both?
+    buttons:
+    - title: Restaurants
+      payload: /giving_place_type{{"place_type":"restaurants"}}
+    - title: Coffee Houses
+      payload: /giving_place_type{{"place_type":"coffee houses"}}
+    - title: Both
+      payload: /giving_place_type{{"place_type":"both restaurants and coffee houses"}}
+  # utter_beginning_search:
+  # - text: Looking for {place_type} around {address} with a search radius of {radius} km
+  utter_wrong_address:
+  - text: Address not found. Check for spelling mistakes.
+  utter_wrong_radius:
+  - text: Please use a number for radius
+  utter_purpose:
+  - text: I can help you search for restaurants, coffee houses or both.
+  utter_welcome:
+  - text: You're welcome.
+  utter_out_of_scope:
+  - text: Sorry, but I can't handle that request
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't understand that. Please rephrase your request.
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: I am sorry to hear that. Hanging out with friends can help improve your mood.
+  utter_happy:
+  - text: Great. I am glad to hear that.
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_places_search
+- action_reset_address
+- action_beginning_search
+- action_validate_slot_mappings
+- utter_ask_place_type
+# - utter_beginning_search
+- utter_cheer_up
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_out_of_scope
+- utter_purpose
+- utter_welcome
+- validate_places_search_form
+forms:
+  place_search_form:
+    required_slots:
+    - place_type
+    - address
+    - radius
