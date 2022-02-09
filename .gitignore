@@ -1,3 +1,4 @@
+.env
 .rasa
 .ipynb_checkpoints
 story_graph.dot

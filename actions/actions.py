@@ -10,7 +10,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, ValidationAction, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from dotenv import dotenv_values
 import requests
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
@@ -20,7 +20,7 @@ from word2number import w2n
 
 geolocator = Nominatim(user_agent="rasa_chat")
 reverse = RateLimiter(geolocator.reverse, min_delay_seconds=0.1)
-
+API_KEY = dotenv_values()["API_KEY"]
 class ActionBeginningSearch(Action):
     def name(self) -> Text:
         return "action_beginning_search"
@@ -51,7 +51,7 @@ class ActionPlacesSearch(Action):
         
         headers = {
             "Accept": "application/json",
-            "Authorization": ""
+            "Authorization": API_KEY
         }
 
         params = {'ll':location, 'radius':radius, 'categories':categories}
