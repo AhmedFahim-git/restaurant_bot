@@ -1,12 +1,16 @@
 # Restaurant Bot
 
-A Rasa chatbot that finds restaurants and coffee houses using the FOURSQUARE Places API
+Restaurant Bot is a simple chat bot that searches for restaurants, coffee houses, or both near given locations.
 
-In order to use the chatbot first install Rasa in a virtual environment. Activate the virtual environment, and then run the following command.
+This is a sample project. It uses [Rasa](https://rasa.com/) as the chat bot framework and the [FOURSQUARE Places API](https://developer.foursquare.com/docs/places-api-overview) to search for the places of interest.
+
+In order to use the chatbot first install Rasa in a virtual environment and activate it. Clone and move into the repository, and run the following command.
 
 ```terminal
 rasa train
 ```
+
+This may take a while as it trains the machine learning model.
 
 Once the model is trained, in one terminal run the following command.
 
