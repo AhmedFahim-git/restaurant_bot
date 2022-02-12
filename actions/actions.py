@@ -81,7 +81,7 @@ class ActionPlacesSearch(Action):
             df['address'] = df.apply(lambda x: reverse((x['lat'], x['lon']) ).address , axis=1)
             
             # Format the dataframe to bot response
-            bot_response = '\n\n'.join(df.apply(lambda x: f"Name: {x['name']}\nAddress: {x['address']}\nDistance: {x['distance']} km", axis=1))
+            bot_response = '\n\n'.join(df.apply(lambda x: f"Name: {x['name']} | Address: {x['address']} | Distance: {x['distance']} km", axis=1))
         except:
             # In case we run into an error we return this response
             bot_response = 'No results returned. Try with a different location or larger radius.'
