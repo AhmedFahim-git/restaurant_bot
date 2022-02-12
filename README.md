@@ -25,3 +25,5 @@ rasa run --enable-api --cors='*'
 ```
 
 Finally open the index.html file in the Chatbot-UI folder using your browser.
+
+![The final chat bot!](/images/chatbot_UI.gif "The end result")
