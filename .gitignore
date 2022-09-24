@@ -1,5 +1,6 @@
 .env
 .rasa
+.vscode
 .ipynb_checkpoints
 story_graph.dot
 models
